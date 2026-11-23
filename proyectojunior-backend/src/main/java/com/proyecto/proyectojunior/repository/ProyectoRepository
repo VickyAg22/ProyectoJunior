@@ -1,0 +1,15 @@
+package com.proyecto.proyectojunior.repository;
+
+import com.proyecto.proyectojunior.model.Proyecto;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ProyectoRepository extends JpaRepository<Proyecto, Long> {
+
+    boolean existsByCreadorIdAndNombreProyecto(Long idCreador, String nombreProyecto);
+
+    List<Proyecto> findByAdministradorIdOrderByFechaCreacionAsc(Long idAdministrador);
+
+    List<Proyecto> findByColaboradoresIdOrderByFechaCreacionAsc(Long idColaborador);
+}
